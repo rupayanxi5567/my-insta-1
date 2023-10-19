@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Insta Like</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	html,
+	body {
+		height: 100%;
+		width: 100%;
+	}
+
+	body {
+		display: flex;
+		align-items: center;
+		background-color: seagreen;
+		height: 130vh;
+		/* justify-content: center; */
+	}
+
+	#container {
+		height: 500px;
+		width: 350px;
+		border-radius: 15px;
+		background-color: wheat;
+		margin-left: 20%;
+		position: relative;
+		overflow: hidden;
+	}
+
+	#container1 {
+		min-height: 500px;
+		width: 350px;
+		border-radius: 15px;
+		background-color: rgb(193, 146, 59);
+		/* margin-left: ; */
+		/* position: relative;
+
+overflow: hidden; */
+	}
+
+	#container0 {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	#subt {
+		height: 20px;
+		width: 100px;
+		margin-left: 70px;
+		margin-top: 20px;
+		border-radius: 20px;
+		background-color: skyblue;
+	}
+
+	#container1H1 {
+		text-align: center;
+		padding-top: 10px;
+		font-size: 30px;
+	}
+
+	#container img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+		/* object-position: center; */
+	}
+
+	#cmntsCollection {
+		margin-top: 15px;
+		display: block;
+		margin-left: 15px;
+		color: aliceblue;
+		font-weight: 600;
+		font-size: 25px;
+	}
+
+	#container i {
+		color: red;
+		font-size: 60px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%)scale(0);
+		opacity: 0.8;
+		transition: all ease 0.2s;
+	}
+
+	#comments {
+		height: 50px;
+		width: 200px;
+		margin-top: 650px;
+		border-radius: 15px;
+		position: relative;
+		overflow: hidden;
+		margin-left: 20px;
+	}
+
+	span {
+		display: block;
+	}
+
+	.canvas {
+		margin: 100px auto 100px;
+		width: 80%;
+		text-align: center;
+	}
+
+	.button {
+		width: 100px;
+		height: 100px;
+		border: solid black 2px;
+		display: inline-block;
+	}
+
+	#grey {
+		background: grey;
+	}
+
+	#white {
+		background: white;
+	}
+
+	#blue {
+		background: blue;
+	}
+
+	#yellow {
+		background: yellow;
+	}
+
+	#red {
+		background: red;
+	}
+
+	#lime {
+		background: lime;
+	}
+
+	#bgChanger {
+		margin-left: 20px;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="container">
+		<img id="img1" src="https://images.pexels.com/photos/675920/pexels-photo-675920.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+		<i id="love1" class="bi bi-arrow-through-heart-fill"></i>
+	</div>
+	<div id="container0">
+		<input type="text" name="comments" id="comments" placeholder="Add your comments">
+		<input type="submit" id="subt" value="Send">
+	</div>
+	<div id="container1">
+		<h1 id="container1H1">Comments</h1>
+		<!-- <p class="container1P" >dauhefcojnolifjeqr</p> -->
+	</div>
+	<div id="bgChanger">
+		<span class="button" id="grey"></span>
+		<span class="button" id="white"></span>
+		<span class="button" id="blue"></span>
+		<span class="button" id="yellow"></span>
+		<span class="button" id="red"></span> <span class="button" id="lime"></span>
+	</div>
+	<script>
+	let img1 = document.getElementById("img1");
+	let love1 = document.getElementById("love1");
+	let comments = document.getElementById("comments")
+	let subt = document.getElementById("subt")
+	let container1 = document.getElementById("container1")
+	let p = document.createElement("p")
+	let buttons = document.querySelectorAll(".button")
+	let container1H1 = document.getElementById("container1H1")
+	let cmntsCollection = document.getElementById("cmntsCollection")
+	img1.addEventListener("dblclick", (e) => {
+		love1.style.transform = "translate(-50%, -50%)scale(1)";
+		setTimeout(() => {
+			love1.style.transform = "translate(-50%, -50%)scale(0)";
+		}, 1500);
+	})
+	subt.addEventListener("click", (e) => {
+		e.preventDefault()
+		let cmntsCollection = comments.value
+		container1.innerHTML += ` <span id = "cmntsCollection" > ${cmntsCollection} </span> `
+		comments.value = " "
+	})
+	buttons.forEach((el) => {
+		el.addEventListener("click", (e) => {
+			if(e.target.id === "grey") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "black"
+				cmntsCollection.style.color = "white"
+			}
+			if(e.target.id === "white") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "black"
+				cmntsCollection.style.color = "black"
+			}
+			if(e.target.id === "blue") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "white"
+			}
+			if(e.target.id === "yellow") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "black"
+			}
+			if(e.target.id === "red") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "black"
+			}
+			if(e.target.id === "lime") {
+				container1.style.backgroundColor = e.target.id
+				container1H1.style.color = "black"
+			}
+		})
+	})
+	</script>
+</body>
+
+</html>
